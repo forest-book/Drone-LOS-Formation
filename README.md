@@ -57,51 +57,27 @@ React、DRF、Terraform を勉強する際に使用できるテンプレート
 
 ```
 .
-├── .devcontainer
-│   └── devcontainer.json
+├── CoppeliaSim
+│   └── Scene
+|       └── tuizyuu.ttt
 ├── .env
 ├── .github
 │   ├── action
 │   ├── release-drafter.yml
 │   └── workflows
+├── main
+│   ├── control_strategies.py
+│   ├── formations.py
+│   ├── main.py
+│   ├── simulation.py
+│   └── swarm_components.py
+├── sandbox
+│   └── diagnosis_drone.py
+├── thesis
+│   └── B2023Shiota.pdf
 ├── .gitignore
 ├── README.md
-├── backend
-│   ├── .vscode
-│   ├── application
-│   ├── docs
-│   ├── manage.py
-│   ├── output
-│   ├── poetry.lock
-│   ├── project
-│   └── pyproject.toml
-├── containers
-│   ├── django
-│   ├── front
-│   ├── mysql
-│   └── nginx
-├── docker-compose.yml
-├── frontend
-│   ├── .gitignore
-│   ├── README.md
-│   ├── __test__
-│   ├── components
-│   ├── features
-│   ├── next-env.d.ts
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── pages
-│   ├── postcss.config.js
-│   ├── public
-│   ├── styles
-│   ├── tailwind.config.js
-│   └── tsconfig.json
-└── infra
-    ├── .gitignore
-    ├── docker-compose.yml
-    ├── main.tf
-    ├── network.tf
-    └── variables.tf
+└── requirements.txt
 ```
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
