@@ -9,9 +9,9 @@
 <!-- 該当するプロジェクトの中から任意のものを選ぶ-->
 <p style="display: inline">
   <!-- 制御スクリプト -->
-  <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-Python-F2C63C.svg?logo=python&style=plastic">
   <!-- シミュレータ環境 -->
-  <img src="https://img.shields.io/badge/-CoppeliaSim-232F3E.svg?logo=amazon-aws&style=for-the-badge">
+  <img src="https://img.shields.io/badge/-CoppeliaSim-232F3E.svg?style=plastic">
 </p>
 
 ## 目次
