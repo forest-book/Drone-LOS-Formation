@@ -95,6 +95,7 @@ React、DRF、Terraform を勉強する際に使用できるテンプレート
 
 ❯ tree -a -I "node_modules|.next|.git|.pytest_cache|static" -L 2
 
+```
 .
 ├── .devcontainer
 │   └── devcontainer.json
@@ -142,7 +143,8 @@ React、DRF、Terraform を勉強する際に使用できるテンプレート
     ├── main.tf
     ├── network.tf
     └── variables.tf
-    
+```
+
 <p align="right">(<a href="#top">トップへ</a>)</p>
 
 ## 開発環境構築
