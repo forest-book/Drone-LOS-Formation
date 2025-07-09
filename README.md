@@ -23,7 +23,7 @@
 
 # Drone-LOS-Formation
 
-React、DRF、Terraform のテンプレートリポジトリ
+LOS誘導に基づくクワッドロータ群のフォーメーション制御
 
 <!-- プロジェクトについて -->
 
