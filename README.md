@@ -21,7 +21,7 @@
 
 <!-- プロジェクト名を記載 -->
 
-## Drone-LOS-Formation
+# Drone-LOS-Formation
 
 React、DRF、Terraform のテンプレートリポジトリ
 
