@@ -1,5 +1,3 @@
-# Drone-LOS-Formation
-
 <div id="top"></div>
 
 ## 使用技術一覧
@@ -23,7 +21,7 @@
 
 <!-- プロジェクト名を記載 -->
 
-## プロジェクト名
+## Drone-LOS-Formation
 
 React、DRF、Terraform のテンプレートリポジトリ
 
