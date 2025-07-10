@@ -104,7 +104,7 @@ python -m venv .venv
 ### Pythonパッケージのインストール
 仮想環境が起動した状態で，ターミナル上で
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 を実行．requirements.txt内に記述されているモジュールがインストールされる．
 
