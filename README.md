@@ -95,10 +95,7 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-を実行
-
-
-
+を実行．(.venv) PS E:\Github\Drone-LOS-Formation> のようにディレクトリパスの前に(.venv)と記述されていたら仮想環境が起動している状態である
 
 ### コンテナの停止
 
