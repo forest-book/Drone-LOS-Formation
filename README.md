@@ -30,7 +30,8 @@ LOS誘導に基づくクワッドロータ群のフォーメーション制御
 ## プロジェクトについて
 
 関西大学2024年3月期の卒論「クワッドロータ群のチョークポイント通過に関する研究（塩田氏著）」について，<br>
-「line-of-sight(LOS)に基づくリーダ・フォロワ制御」の内容をMATLABからPythonでの実装に変換した
+「line-of-sight(LOS)に基づくリーダ・フォロワ制御」の内容をMATLABからPythonでの実装に変換した．<br>
+動作環境はWindows 11を想定．
 
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
@@ -99,11 +100,12 @@ python -m venv .venv
 (.venv) PS E:\Github\Drone-LOS-Formation> <br>
 のようにディレクトリパスの前に(.venv)と記述されていたら仮想環境が起動している状態である
 
-### コンテナの停止
-
-以下のコマンドでコンテナを停止することができます
-
-make down
+### Pythonパッケージのインストール
+仮想環境が起動した状態で，ターミナル上で
+```
+pip install requirements.txt
+```
+を実行．requirements.txt内に記述されているモジュールがインストールされる．
 
 ### 環境変数の一覧
 
