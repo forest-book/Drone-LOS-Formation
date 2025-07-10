@@ -29,7 +29,8 @@ LOS誘導に基づくクワッドロータ群のフォーメーション制御
 
 ## プロジェクトについて
 
-関西大学2024年3月期の卒論「クワッドロータ群のチョークポイント通過に関する研究（塩田氏著）」に
+関西大学2024年3月期の卒論「クワッドロータ群のチョークポイント通過に関する研究（塩田氏著）」について，<br>
+「line-of-sight(LOS)に基づくリーダ・フォロワ制御」の内容をMATLABからPythonでの実装に変換した
 
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
@@ -79,27 +80,15 @@ Pythonパッケージのバージョンは requirements.txt を参照してく�
 
 ### Python仮想環境の作成と起動
 
-.env ファイルを以下の環境変数例と[環境変数の一覧](#環境変数の一覧)を元に作成
+プロジェクトのルートディレクトリにて以下のコマンドを実行
 
-.env
-MYSQL_ROOT_PASSWORD=root
-MYSQL_DATABASE=django-db
-MYSQL_USER=django
-MYSQL_PASSWORD=django
-MYSQL_HOST=db
-MYSQL_PORT=3306
-SECRET_KEY=django
-DJANGO_SETTINGS_MODULE=project.settings.local
+```
+python -m venv .venv
+```
 
 
-.env ファイルを作成後、以下のコマンドで開発環境を構築
 
-make prepare
 
-### 動作確認
-
-http://127.0.0.1:8000 にアクセスできるか確認
-アクセスできたら成功
 
 ### コンテナの停止
 
