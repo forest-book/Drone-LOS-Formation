@@ -18,6 +18,7 @@
 3. [ディレクトリ構成](#ディレクトリ構成)
 4. [開発環境構築](#開発環境構築)
 5. [CoppeliaSimのインストールと起動](#CoppeliaSimのインストールと起動)
+6. [シミュレーションの実行](#シミュレーションの実行)
 
 <!-- プロジェクト名を記載 -->
 
@@ -126,6 +127,7 @@ deactivate
 <a href="https://www.coppeliarobotics.com/">CoppeliaSim公式サイト</a>からCoppeliaSimのEducation版をダウンロード．<br>
 セットアップ用のexeファイルを実行し，インストールを完了させる．
 
+<p align="right">(<a href="#top">トップへ</a>)</p>
 
 ### CoppeliaSimの起動
 CoppeliaSimを起動させる．Toolバーから[File] ⇒ [Open Scene ...] から tuizyuu.tttを選択し，シーンを開く
@@ -142,20 +144,7 @@ cd main
 python main.py
 ```
 
-を実行すると，シミュレーションがスタートする．5台のクワッドロータがフォーメーションを組みながら目標位置(Cylinder)へと移動する．
-
-### Ports are not available: address already in use
-
-別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります
-<br>
-下記記事を参考にしてください
-<br>
-[コンテナ起動時に Ports are not available: address already in use が出た時の対処法について](https://qiita.com/shun198/items/ab6eca4bbe4d065abb8f)
-
-### Module not found
-
-make build
-
-を実行して Docker image を更新してください
+を実行すると，シミュレーションがスタートする．5台のクワッドロータがフォーメーションを組みながら目標位置(Cylinder)へと移動する．<br>
+ターミナル上で Ctrl + Cキーを押下すると，シミュレーションがストップする．
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
