@@ -55,11 +55,7 @@ Pythonパッケージのバージョンは requirements.txt を参照してく�
 ├── CoppeliaSim
 │   └── Scene
 |       └── tuizyuu.ttt
-├── .env
-├── .github
-│   ├── action
-│   ├── release-drafter.yml
-│   └── workflows
+├── .venv
 ├── main
 │   ├── control_strategies.py
 │   ├── formations.py
