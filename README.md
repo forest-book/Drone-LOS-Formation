@@ -52,10 +52,10 @@ Pythonパッケージのバージョンは requirements.txt を参照してく�
 
 ```
 .
+├── .venv
 ├── CoppeliaSim
 │   └── Scene
 |       └── tuizyuu.ttt
-├── .venv
 ├── main
 │   ├── control_strategies.py
 │   ├── formations.py
