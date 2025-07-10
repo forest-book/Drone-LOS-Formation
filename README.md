@@ -130,13 +130,19 @@ deactivate
 ### CoppeliaSimの起動
 CoppeliaSimを起動させる．Toolバーから[File] ⇒ [Open Scene ...] から tuizyuu.tttを選択し，シーンを開く
 
-## 
+## シミュレーションの実行
+### スクリプトの実行
+```
+cd main 
+```
 
-.env ファイルがないので環境変数の一覧を参考に作成しましょう
+でmainディレクトリに移動し，
 
-### docker daemon is not running
+```
+python main.py
+```
 
-Docker Desktop が起動できていないので起動させましょう
+を実行すると，シミュレーションがスタートする．5台のクワッドロータがフォーメーションを組みながら目標位置(Cylinder)へと移動する．
 
 ### Ports are not available: address already in use
 
