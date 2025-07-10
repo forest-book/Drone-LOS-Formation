@@ -17,7 +17,8 @@
 2. [環境](#環境)
 3. [ディレクトリ構成](#ディレクトリ構成)
 4. [開発環境構築](#開発環境構築)
-5. [トラブルシューティング](#トラブルシューティング)
+5. [CoppeliaSimのインストールと起動](#CoppeliaSimのインストールと起動)
+6. [トラブルシューティング](#トラブルシューティング)
 
 <!-- プロジェクト名を記載 -->
 
@@ -123,7 +124,7 @@ deactivate
 
 ## CoppeliaSimのインストールと起動
 ### CoppeliaSimのインストール
-<a href="https://www.coppeliarobotics.com/">CoppeliaSim公式サイト</a>
+<a href="https://www.coppeliarobotics.com/">CoppeliaSim公式サイト</a>からCoppeliaSimのEducation版をダウンロード
 
 
 
