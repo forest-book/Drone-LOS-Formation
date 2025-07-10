@@ -127,10 +127,10 @@ deactivate
 <a href="https://www.coppeliarobotics.com/">CoppeliaSim公式サイト</a>からCoppeliaSimのEducation版をダウンロード．<br>
 セットアップ用のexeファイルを実行し，インストールを完了させる．
 
-<p align="right">(<a href="#top">トップへ</a>)</p>
-
 ### CoppeliaSimの起動
-CoppeliaSimを起動させる．Toolバーから[File] ⇒ [Open Scene ...] から tuizyuu.tttを選択し，シーンを開く
+CoppeliaSimを起動させる．Toolバーから[File] ⇒ [Open Scene ...] から tuizyuu.tttを選択し，シーンを開く．
+
+<p align="right">(<a href="#top">トップへ</a>)</p>
 
 ## シミュレーションの実行
 ### スクリプトの実行
