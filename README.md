@@ -29,7 +29,7 @@ LOS誘導に基づくクワッドロータ群のフォーメーション制御
 
 ## プロジェクトについて
 
-React、DRF、Terraform を勉強する際に使用できるテンプレート
+関西大学2024年3月期の卒論「クワッドロータ群のチョークポイント通過に関する研究（塩田氏著）」に
 
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
@@ -45,9 +45,6 @@ React、DRF、Terraform を勉強する際に使用できるテンプレート
 | Django Rest Framework | 3.14.0     |
 | MySQL                 | 8.0        |
 | Node.js               | 16.17.0    |
-| React                 | 18.2.0     |
-| Next.js               | 13.4.6     |
-| Terraform             | 1.3.6      |
 
 その他のパッケージのバージョンは pyproject.toml と package.json を参照してください
 
