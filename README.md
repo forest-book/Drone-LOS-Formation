@@ -18,7 +18,6 @@
 3. [ディレクトリ構成](#ディレクトリ構成)
 4. [開発環境構築](#開発環境構築)
 5. [CoppeliaSimのインストールと起動](#CoppeliaSimのインストールと起動)
-6. [トラブルシューティング](#トラブルシューティング)
 
 <!-- プロジェクト名を記載 -->
 
@@ -129,9 +128,9 @@ deactivate
 
 
 ### CoppeliaSimの起動
-CoppeliaSimを起動させる．Toolバーから[File]
+CoppeliaSimを起動させる．Toolバーから[File] ⇒ [Open Scene ...] から tuizyuu.tttを選択し，シーンを開く
 
-### .env: no such file or directory
+## 
 
 .env ファイルがないので環境変数の一覧を参考に作成しましょう
 
