@@ -124,11 +124,12 @@ deactivate
 
 ## CoppeliaSimのインストールと起動
 ### CoppeliaSimのインストール
-<a href="https://www.coppeliarobotics.com/">CoppeliaSim公式サイト</a>からCoppeliaSimのEducation版をダウンロード
+<a href="https://www.coppeliarobotics.com/">CoppeliaSim公式サイト</a>からCoppeliaSimのEducation版をダウンロード．<br>
+セットアップ用のexeファイルを実行し，インストールを完了させる．
 
 
-
-## トラブルシューティング
+### CoppeliaSimの起動
+CoppeliaSimを起動させる．Toolバーから[File]
 
 ### .env: no such file or directory
 
