@@ -58,7 +58,8 @@ class LeaderStrategy(Strategy):
         if dist_to_goal < 30: # 到達判定
             return np.zeros(3)
         
-        return (goal_vector / dist_to_goal) * max_speed
+        velocity = (goal_vector / dist_to_goal) * max_speed
+        return velocity, 0.0 # リーダの誤差は0とする
 
 class FollowerStrategy(Strategy):
     """フォロワーの制御戦略（LOS追従 + 衝突回避）"""
@@ -78,13 +79,14 @@ class FollowerStrategy(Strategy):
             return np.zeros(3)
 
         # 1. LOS追従速度の計算
-        los_velocity = self._calculate_los_velocity(self_quad, leader, formation, follower_list_idx)
+        los_velocity, tracking_error = self._calculate_los_velocity(self_quad, leader, formation, follower_list_idx)
         
         # 2. 衝突回避の計算
         avoidance_velocity, is_avoiding = self._calculate_avoidance_velocity(self_quad, leader, all_quads)
 
         # 3. 回避行動中であれば回避速度を優先、そうでなければLOS追従速度を使用
-        return avoidance_velocity if is_avoiding else los_velocity
+        final_velocity = avoidance_velocity if is_avoiding else los_velocity
+        return final_velocity, tracking_error
 
     def _calculate_los_velocity(self, self_quad: Quadcopter, leader: Quadcopter, formation: Formation, idx: int) -> np.ndarray:
         """論文3.3節のロジック"""
@@ -101,6 +103,7 @@ class FollowerStrategy(Strategy):
         
         # 式(3.9) フォロワから目標点へのベクトルl
         lt = (leader.position - self_quad.position) + D
+        tracking_error = np.linalg.norm(lt) # 追従誤差
         
         # 式(3.13) hの計算
         h = self.k0l[idx, 0] + self.k0l[idx, 1] / (1 + np.linalg.norm(lt))
@@ -114,7 +117,7 @@ class FollowerStrategy(Strategy):
         cin_mag = np.linalg.norm(leader.velocity) * \
                   (1 + (2/np.pi) * self.kps[idx, 0] * np.arctan(dot_val / self.kps[idx, 1]))
         
-        return cin_mag * cin_dir
+        return cin_mag * cin_dir, tracking_error
 
     def _calculate_avoidance_velocity(self, self_quad: Quadcopter, leader: Quadcopter, all_quads: List[Quadcopter]) -> Tuple[np.ndarray, bool]:
         """論文3.4節のロジック"""

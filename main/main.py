@@ -1,11 +1,12 @@
 import numpy as np
 import time
-from typing import List
+from typing import List, Dict
 
 from simulation import SimulatorInterface
 from swarm_components import Quadcopter, Role
 from formations import V_SHAPE_FORMATION, LINE_FORMATION
 from control_strategies import Strategy, LeaderStrategy, FollowerStrategy
+from data_handler import DataLogger, Plotter
 
 class MainController:
     """アプリケーション全体を管理し、メインループを実行する"""
@@ -27,6 +28,9 @@ class MainController:
             Role.FOLLOWER: self.follower_strategy
         }
 
+        # DataLoggerのインスタンス化
+        self.data_logger: DataLogger = None
+
     def initialize(self):
         """システムの初期化"""
         quad_names = [f'Quadcopter[{i}]' for i in range(self.params['quad_num'])]
@@ -42,6 +46,10 @@ class MainController:
         
         self.leader = self.quads[leader_idx]
         self.followers = [q for q in self.quads if q.role == Role.FOLLOWER]
+
+        # DataLoggerをフォロワのIDリストで初期化
+        follower_ids = [f.id for f in self.followers]
+        self.data_logger = DataLogger(follower_ids)
         
         # シミュレータの初期位置を設定
         self.sim.set_all_quad_positions(self.quads)
@@ -69,6 +77,9 @@ class MainController:
                         print(f"--- Goal reached at loop {loop+1}. Holding positions. ---")
                         self.goal_reached = True
 
+                # 追従誤差を格納する辞書
+                current_errors: Dict[int, float] = {}
+
                 # 3. 速度を計算する（ゴール到達後はゼロを設定）
                 if self.goal_reached:
                     print("finish")
@@ -88,7 +99,18 @@ class MainController:
                             'formation': V_SHAPE_FORMATION,
                             'follower_idx': self.followers.index(quad) if quad.role == Role.FOLLOWER else -1
                         }
-                        quad.next_velocity = strategy.calculate_velocity(quad, **strategy_kwargs)
+
+                        # 速度と誤差を計算
+                        velocity, error = strategy.calculate_velocity(quad, **strategy_kwargs)
+                        quad.next_velocity = velocity
+
+                        # フォロワの場合，誤差を記録
+                        if quad.role == Role.FOLLOWER:
+                            current_errors[quad.id] = error
+                
+                # DataLoggerに現在のステップの誤差データを追加
+                if not self.goal_reached:
+                    self.data_logger.add_entry(loop + 1, current_errors)
 
                 # 4. 内部の位置情報を更新（ゴール到達後は、速度ゼロで更新されるため位置は変わらない）
                 for quad in self.quads:
@@ -105,6 +127,9 @@ class MainController:
             print("\nSimulation interrupted by user.")
         finally:
             self.sim.stop_simulation()
+            # シミュレーション終了時にCSV保存とグラフ描画を実行
+            self.data_logger.save_to_csv()
+            Plotter.plot_from_csv()
 
     def debug(self):
         """デバッグ用のメソッド"""
@@ -117,7 +142,7 @@ if __name__ == '__main__':
     # パラメータを一元管理
     sim_params = {
         'quad_num': 5,
-        'loop_num': 5000,
+        'loop_num': 2000,
         'leader_idx': 0,
         'dt': 0.5,
         'distance_threshold': 80.0,
