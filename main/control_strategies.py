@@ -56,7 +56,7 @@ class LeaderStrategy(Strategy):
         dist_to_goal = np.linalg.norm(goal_vector)
         
         if dist_to_goal < 30: # 到達判定
-            return np.zeros(3)
+            return np.zeros(3), 0.0
         
         velocity = (goal_vector / dist_to_goal) * max_speed
         return velocity, 0.0 # リーダの誤差は0とする
