@@ -43,12 +43,12 @@ def rot(axis: np.ndarray, th: float) -> np.ndarray:
 class Strategy(ABC):
     """制御戦略のインターフェース"""
     @abstractmethod
-    def calculate_velocity(self, self_quad: Quadcopter, all_quads: List[Quadcopter], **kwargs) -> np.ndarray:
+    def calculate_velocity(self, self_quad: Quadcopter, all_quads: List[Quadcopter], **kwargs) -> Tuple[np.ndarray, float]:
         pass
 
 class LeaderStrategy(Strategy):
     """リーダーの制御戦略"""
-    def calculate_velocity(self, self_quad: Quadcopter, all_quads: List[Quadcopter], **kwargs) -> np.ndarray:
+    def calculate_velocity(self, self_quad: Quadcopter, all_quads: List[Quadcopter], **kwargs) -> Tuple[np.ndarray, float]:
         goal_pos = kwargs['goal']
         max_speed = kwargs['max_speed']
         
@@ -68,7 +68,7 @@ class FollowerStrategy(Strategy):
         self.kps = kps
         self.threshold = threshold
 
-    def calculate_velocity(self, self_quad: Quadcopter, all_quads: List[Quadcopter], **kwargs) -> np.ndarray:
+    def calculate_velocity(self, self_quad: Quadcopter, all_quads: List[Quadcopter], **kwargs) -> Tuple[np.ndarray, float]:
         leader = kwargs['leader']
         formation = kwargs['formation']
         follower_list_idx = kwargs['follower_idx'] # このフォロワーがリストの何番目か
@@ -76,7 +76,7 @@ class FollowerStrategy(Strategy):
         # リーダーの速度がほぼゼロ（停止している）場合、フォロワーも停止する
         # 物理シミュレーションでは完全に0にならない場合を考慮し、微小な閾値を設ける
         if np.linalg.norm(leader.velocity) < 0.1:
-            return np.zeros(3)
+            return np.zeros(3), np.linalg.norm((leader.position - self_quad.position)) # 停止時はリーダーとの距離を誤差とする
 
         # 1. LOS追従速度の計算
         los_velocity, tracking_error = self._calculate_los_velocity(self_quad, leader, formation, follower_list_idx)
@@ -88,7 +88,7 @@ class FollowerStrategy(Strategy):
         final_velocity = avoidance_velocity if is_avoiding else los_velocity
         return final_velocity, tracking_error
 
-    def _calculate_los_velocity(self, self_quad: Quadcopter, leader: Quadcopter, formation: Formation, idx: int) -> np.ndarray:
+    def _calculate_los_velocity(self, self_quad: Quadcopter, leader: Quadcopter, formation: Formation, idx: int) -> Tuple[np.ndarray, float]:
         """論文3.3節のロジック"""
         local_axis = axis_transform(leader.speed_dir)
         
