@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 from typing import List, Dict
 import datetime
 
+# データ保存時の日時
+current_time = datetime.datetime.now()
+
 class DataLogger:
     """
     シミュレーション中のデータを収集し、CSVファイルに保存するクラス。
@@ -29,14 +32,15 @@ class DataLogger:
         row = [step] + [errors.get(fid, None) for fid in self.follower_ids]
         self.data.append(row)
 
-    def save_to_csv(self, filename: str = 'tracking_errors.csv'):
+    def save_to_csv(self, filename: str = f'tracking_errors_{current_time.strftime(r'%Y-%m-%d-%H-%M-%S')}.csv'):
         """
         収集したデータをCSVファイルに保存する。
 
         Args:
             filename (str): 保存するCSVファイル名。
         """
-        with open(filename, 'w', newline='', encoding='utf-8') as f:
+        dir_path = "../data/csv/" + filename
+        with open(dir_path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerows(self.data)
         print(f"Data successfully saved to {filename}")
@@ -46,7 +50,7 @@ class Plotter:
     CSVファイルからデータを読み込み、グラフを描画するクラス。
     """
     @staticmethod
-    def plot_from_csv(filename: str = 'tracking_errors.csv'):
+    def plot_from_csv(filename: str = f'tracking_errors_{current_time.strftime(r'%Y-%m-%d-%H-%M-%S')}.csv'):
         """
         指定されたCSVファイルから追従誤差のグラフをプロットする。
 
@@ -54,7 +58,8 @@ class Plotter:
             filename (str): 読み込むCSVファイル名。
         """
         try:
-            df = pd.read_csv(filename)
+            file_path = f"../data/csv/{filename}"
+            df = pd.read_csv(file_path)
             plt.figure(figsize=(12, 8))
             
             for column in df.columns:
@@ -66,8 +71,8 @@ class Plotter:
             plt.title('Follower Tracking Error over Time')
             plt.legend()
             plt.grid(True)
-            plt.savefig('tracking_error_graph.png')
-            print("Graph successfully saved to tracking_error_graph.png")
+            plt.savefig(f'../data/graph/tracking_error_graph_{current_time.strftime(r'%Y-%m-%d-%H-%M-%S')}.png')
+            print(f"Graph successfully saved to tracking_error_graph_{current_time.strftime(r'%Y-%m-%d-%H-%M-%S')}.png")
             plt.show()
 
         except FileNotFoundError:
