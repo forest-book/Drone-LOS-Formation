@@ -22,7 +22,7 @@ class SimulatorInterface:
         self.sim.stopSimulation()
         time.sleep(1) # 確実に停止するのを待つ
         self.sim.startSimulation()
-        print("Connected.")
+        print("Simulation started.")
         # シミュレーション開始後に同期モードを有効化（開始前では無効）
         self.client.setStepping(True)
         print("Simulation started in stepping mode.")
