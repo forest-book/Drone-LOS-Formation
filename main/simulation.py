@@ -16,19 +16,16 @@ class SimulatorInterface:
         self.target_handles = []
         self.goal_cylinder_handle = -1
 
-    def connect(self):
-        """シミュレータへの接続を試みる"""
-        print("Connecting to CoppeliaSim...")
-        # 必要に応じてポート番号をシーンに合わせて調整してください
-        self.client.setStepping(True) # 必要に応じて同期モードを有効にする
-        print("Connected.")
-
     def start_simulation(self):
         """シミュレーションを開始する"""
+        print("Starting CoppeliaSim simulation...")
         self.sim.stopSimulation()
         time.sleep(1) # 確実に停止するのを待つ
         self.sim.startSimulation()
         print("Simulation started.")
+        # シミュレーション開始後に同期モードを有効化（開始前では無効）
+        self.client.setStepping(True)
+        print("Simulation started in stepping mode.")
 
     def stop_simulation(self):
         """シミュレーションを停止する"""
