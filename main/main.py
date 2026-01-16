@@ -57,7 +57,6 @@ class MainController:
 
     def run(self):
         """メインループの実行"""
-        self.sim.connect()
         self.sim.start_simulation()
         self.initialize()
         
