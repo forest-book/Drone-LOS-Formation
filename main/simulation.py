@@ -18,7 +18,7 @@ class SimulatorInterface:
 
     def start_simulation(self):
         """シミュレーションを開始する"""
-        print("Connecting to CoppeliaSim...")
+        print("Starting CoppeliaSim simulation...")
         self.sim.stopSimulation()
         time.sleep(1) # 確実に停止するのを待つ
         self.sim.startSimulation()
